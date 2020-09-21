@@ -1,0 +1,8 @@
+<h2>Panier<h2>
+  <p *ngIf="items.lenght == 0">Votre panier est vide !</p>
+  <ul>
+    <li *ngFor="let item of items">
+      <h3>{{item.name}} ({{item.price | currency}})</h3>
+    </li>
+  </ul>
+  <a [routerLink] = "['/livraison']">Voir les frais de livraison</a>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../cart.service';
 import {products} from '../products';
 
 @Component({
@@ -14,7 +15,8 @@ product;
 
   constructor(
     //declare route
-    private route : ActivatedRoute
+    private route : ActivatedRoute,
+    private cartService :  CartService
     ) { 
     
   }
@@ -23,6 +25,11 @@ product;
     this.route.paramMap.subscribe(params =>{
       this.product = products[params.get('produitId')]
     })
+  }
+
+  ajouterPanier(product:Object):void{
+this.cartService.addItem(product);
+console.log(product.name + ' ajoute au panier');
   }
 
 }
