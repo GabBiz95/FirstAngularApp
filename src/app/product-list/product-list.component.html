@@ -1,4 +1,26 @@
+<!-- Liste de Produits a afficher -->
 <h2>Produits</h2>
+
+<!-- afficher les produits dynamiquement -->
+<div>
+  <!-- ngfor = boucle javascript -->
+  <!-- extraire d'une liste de produits -->
+<div *ngFor="let product of products">
+    <!-- [] pour lier un texte a quelque chose -->
+  <h3>
+    <a [title] = "'Voir plus de détails sur ' + product.name">{{product.name}}</a>
+    </h3>
+ 
+    <!-- {{product|json}}  -->
+      <!-- ngif = commande if et retire la description des produits qui en n'ont pas  -->
+    <p *ngIf="product.description">
+      Description : {{product.description}}
+    </p>
+
+    <button (click)="share()">
+      Partager
+    </button>
+</div>
 
 
 <!-- 
