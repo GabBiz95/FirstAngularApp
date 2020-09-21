@@ -5,10 +5,14 @@
 <div>
   <!-- ngfor = boucle javascript -->
   <!-- extraire d'une liste de produits -->
-<div *ngFor="let product of products">
+<div *ngFor="let product of products; index as produitId">
     <!-- [] pour lier un texte a quelque chose -->
   <h3>
-    <a [title] = "'Voir plus de détails sur ' + product.name">{{product.name}}</a>
+    <a [title] = "'Voir plus de détails sur ' + product.name"
+       [routerLink]="['/produits', produitId]"
+    >{{product.name}}
+ 
+    </a>
     </h3>
  
     <!-- {{product|json}}  -->
@@ -20,6 +24,10 @@
     <button (click)="share()">
       Partager
     </button>
+
+    <app-product-alerts [produit] = "product"
+    (notif) = "onNotif()"
+     ></app-product-alerts>
 </div>
 
 
